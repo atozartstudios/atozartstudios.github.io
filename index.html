@@ -155,7 +155,7 @@
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Cycle.js app -->
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
 
     <!-- Custom Theme JavaScript -->
     <script>
@@ -207,6 +207,45 @@
                     });
                 });
             }
+        }
+    });
+
+    // Load images from Etsy store
+    $.ajax({
+        url: "https://openapi.etsy.com/v2/shops/atozartstudios/listings/active.js",
+        //url: "https://openapi.etsy.com/v2/shops/sunmetaljewelry/listings/active.js",
+        jsonp: "callback",
+        dataType: "jsonp",
+        data: {
+            shop_id: "atozartstudios",
+            //shop_id: "sunmetaljewelry",
+            limit: "24",
+            fields: "url",
+            includes: "Shop(url),MainImage(url_570xN)",
+            api_key: "47n0do6vdvux8ei6u2atiy76"
+        },
+        success: function(response) {
+            $("#portfolio").html(
+                $('<div/>',{ "class": 'container'}).append(
+                    $('<div/>',{ "class": 'row'}).append(
+                        $('<div/>',{ "class": 'col-lg-10 col-lg-offset-1 text-center'}).append(
+                            $('<h2/>').append(response.count > 0 ? 'Our Work' : 'We currently have nothing available for sale'),
+                            $('<hr>', {"class": 'small'}),
+                            $('<div>', {"class": 'row'}).append(response.results.map(function(r) {
+                                return $('<div>', {"class": 'col-md-4'}).append(
+                                    $('<div>', {"class": 'portfolio-item'}).append(
+                                        $('<a>', {"href": r.url}).append(
+                                            $('<img/>', {"class": 'img-portfolio img-responsive', "src": r.MainImage.url_570xN})
+                                        )
+                                    )
+                                )
+                            })),
+                            response.count < 1 ? $('<a>', {"class": 'btn btn-dark', "href": 'https://www.etsy.com/shop/sunmetaljewelry'}).append('Visit Our Etsy Store') :
+                                $('<a>', {"class": 'btn btn-dark', "href": response.results[0].Shop.url}).append(response.count > 24 ? 'View More Items' : 'Visit Our Etsy Store')
+                        )
+                    )
+                )
+            );
         }
     });
     </script>
