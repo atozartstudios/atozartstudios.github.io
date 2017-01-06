@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>A to Z Art Studios</title>
+    <title>{{ site.data.customize.title }}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +40,7 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();>A to Z Art Studios</a>
+            <a href="#top" onclick=$("#menu-close").click();>{{ site.data.customize.title }}</a>
             </li>
             <li>
                 <a href="#top" onclick=$("#menu-close").click();>Home</a>
@@ -58,8 +60,8 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1>A to Z Art Studios</h1>
-            <h3>A combination of the works of Zechariah and Angela Moore</h3>
+            <h1>{{ site.data.customize.title }}</h1>
+            <h3>{{ site.data.customize.subtitle }}</h3>
             <br>
             <a href="#about" class="btn btn-dark btn-lg">Find Out More About Us</a>
             <br>
@@ -73,8 +75,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Something something introducing A to Z Art Studios</h2>
-                    <p class="lead">Something something talking about ourselves, what we do, who we are, etc, etc.</p>
+                    <h2>{{ site.data.customize.about_heading }}</h2>
+                    <p class="lead">{{ site.data.customize.about_detail }}</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -85,7 +87,7 @@
     <!-- Callout -->
     <aside class="callout">
         <div class="text-vertical-center">
-            <h1>Short Inspiring Words</h1>
+            <h1>{{ site.data.customize.callout }}</h1>
         </div>
     </aside>
 
@@ -95,7 +97,7 @@
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
                     <h2>Please enable JavaScript in order to see the items we have available for sale.</h2>
-                    <a href="https://www.etsy.com/shop/atozartstudios" class="btn btn-dark">Visit Our Etsy Store</a>
+                    <a href="https://www.etsy.com/shop/{{ site.data.customize.etsy_store_name }}" class="btn btn-dark">Visit Our Etsy Store</a>
                 </div>
                 <!-- /.col-lg-10 -->
             </div>
@@ -122,22 +124,22 @@
         <div class="container">
             <div class="row">
                 <div id="contact" class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>A to Z Art Studios</strong>
+                    <h4><strong>{{ site.data.customize.address_name }}</strong>
                     </h4>
-                    <p>3481 Some Street Name
-                        <br>Some City, WI 55555</p>
+                    <p>{{ site.data.customize.address_line1 }}
+                    <br>{{ site.data.customize.address_line2 }}</p>
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">name@example.com</a>
+                        <li><i class="fa fa-phone fa-fw"></i> {{ site.data.customize.phone_number }}</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:{{ site.data.customize.email_address }}">{{ site.data.customize.email_address }}</a>
                         </li>
                     </ul>
                     <br>
                     <ul class="list-inline">
                         <li>
-                            <a href="https://www.facebook.com/atozartstudios/"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        <a href="https://www.facebook.com/{{ site.data.customize.facebook_name }}/"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
                         </li>
                         <li>
-                            <a href="https://www.etsy.com/shop/atozartstudios"><i class="fa fa-etsy fa-fw fa-3x"></i></a>
+                        <a href="https://www.etsy.com/shop/{{ site.data.customize.etsy_store_name }}"><i class="fa fa-etsy fa-fw fa-3x"></i></a>
                         </li>
                     </ul>
                     <hr class="small">
@@ -212,13 +214,11 @@
 
     // Load images from Etsy store
     $.ajax({
-        url: "https://openapi.etsy.com/v2/shops/atozartstudios/listings/active.js",
-        //url: "https://openapi.etsy.com/v2/shops/sunmetaljewelry/listings/active.js",
+        url: "https://openapi.etsy.com/v2/shops/{{ site.data.customize.etsy_store_name }}/listings/active.js",
         jsonp: "callback",
         dataType: "jsonp",
         data: {
-            shop_id: "atozartstudios",
-            //shop_id: "sunmetaljewelry",
+            shop_id: "{{ site.data.customize.etsy_store_name }}",
             limit: "24",
             fields: "url",
             includes: "Shop(url),MainImage(url_570xN)",
@@ -240,7 +240,7 @@
                                     )
                                 )
                             })),
-                            response.count < 1 ? $('<a>', {"class": 'btn btn-dark', "href": 'https://www.etsy.com/shop/sunmetaljewelry'}).append('Visit Our Etsy Store') :
+                            response.count < 1 ? $('<a>', {"class": 'btn btn-dark', "href": 'https://www.etsy.com/shop/{{ site.data.customize.etsy_store_name }}'}).append('Visit Our Etsy Store') :
                                 $('<a>', {"class": 'btn btn-dark', "href": response.results[0].Shop.url}).append(response.count > 24 ? 'View More Items' : 'Visit Our Etsy Store')
                         )
                     )

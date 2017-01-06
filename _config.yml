@@ -1,0 +1,2 @@
+exclude:
+  [src, atozartstudios.github.io, node_modules, package.json, LICENSE, README.md]
