@@ -259,3 +259,7 @@ footer {
     content: "\0045";
     font-family: georgia, serif;
 }
+
+.col-md-4:nth-child(3n+3) + .col-md-4{
+    clear:both;
+}
