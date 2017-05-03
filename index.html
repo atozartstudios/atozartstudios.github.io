@@ -222,7 +222,7 @@
             limit: "24",
             fields: "url",
             includes: "Shop(url),MainImage(url_570xN)",
-            api_key: "47n0do6vdvux8ei6u2atiy76"
+            api_key: "{{ site.data.customize.etsy_api_key}}"
         },
         success: function(response) {
             $("#portfolio").html(

@@ -1,3 +1,5 @@
+---
+---
 /*!
  * Start Bootstrap - Stylish Portfolio (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
@@ -162,8 +164,8 @@ hr.small {
     -o-background-size: cover;
 }
 
-.header h1,h3 {
-    color: #985469;
+.header h1, .header h3 {
+    color: {{ site.data.customize.title_color }};
 }
 
 /* About */
