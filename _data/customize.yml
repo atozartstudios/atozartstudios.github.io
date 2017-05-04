@@ -10,5 +10,6 @@ address_line2: "Scandinavia, WI. 54977"
 phone_number: "(715)252-7411 or (715)252-7422"
 email_address: "atozartstudios@gmail.com"
 etsy_store_name: "atozartstudios"
-etsy_api_key: "47n0do6vdvux8ei6u2atiy76"
+# Use btoa("<api key here>") in javascript to create following entry.
+obfuscated_etsy_api_key: "NDduMGRvNnZkdnV4OGVpNnUyYXRpeTc2"
 facebook_name: "atozartstudios"
